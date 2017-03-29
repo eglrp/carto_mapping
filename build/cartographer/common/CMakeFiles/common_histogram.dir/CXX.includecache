@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hyb/cartographer_source/cartographer/cartographer/common/histogram.cc
+cartographer/common/histogram.h
+/home/hyb/cartographer_source/cartographer/cartographer/common/cartographer/common/histogram.h
+algorithm
+-
+numeric
+-
+string
+-
+cartographer/common/port.h
+/home/hyb/cartographer_source/cartographer/cartographer/common/cartographer/common/port.h
+glog/logging.h
+/home/hyb/cartographer_source/cartographer/cartographer/common/glog/logging.h
+
+/usr/local/include/cartographer/common/histogram.h
+map
+-
+string
+-
+vector
+-
+cartographer/common/port.h
+/usr/local/include/cartographer/common/cartographer/common/port.h
+
+/usr/local/include/cartographer/common/port.h
+cinttypes
+-
+cmath
+-
+string
+-
+boost/iostreams/device/back_inserter.hpp
+-
+boost/iostreams/filter/gzip.hpp
+-
+boost/iostreams/filtering_stream.hpp
+-
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcommon_port.a  
+/usr/bin/ranlib libcommon_port.a

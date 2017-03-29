@@ -1,0 +1,2 @@
+/usr/bin/ar cr libmapping_map_builder.a  CMakeFiles/mapping_map_builder.dir/map_builder.cc.o
+/usr/bin/ranlib libmapping_map_builder.a

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libsensor_configuration.a  CMakeFiles/sensor_configuration.dir/configuration.cc.o
+/usr/bin/ranlib libsensor_configuration.a

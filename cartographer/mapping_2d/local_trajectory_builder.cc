@@ -146,29 +146,31 @@ void LocalTrajectoryBuilder::ScanMatch(
 std::unique_ptr<LocalTrajectoryBuilder::InsertionResult>
 LocalTrajectoryBuilder::AddHorizontalLaserFan(
     const common::Time time, const sensor::LaserFan3D& laser_fan) {
-  // Initialize pose tracker now if we do not ever use an IMU.
-  if (!options_.use_imu_data()) {
-    InitializePoseTracker(time);
-  }
 
-  if (pose_tracker_ == nullptr) {
-    // Until we've initialized the UKF with our first IMU message, we cannot
-    // compute the orientation of the laser scanner.
-    LOG(INFO) << "PoseTracker not yet initialized.";
-    return nullptr;
-  }
+      // Initialize pose tracker now if we do not ever use an IMU.
+      //Using the ukf to realize the pose tracker!
+      if (!options_.use_imu_data()) {
+        InitializePoseTracker(time);
+      }
 
-  transform::Rigid3d pose_prediction;
-  kalman_filter::PoseCovariance covariance_prediction;
-  pose_tracker_->GetPoseEstimateMeanAndCovariance(time, &pose_prediction,
-                                                  &covariance_prediction);
+      if (pose_tracker_ == nullptr) {
+        // Until we've initialized the UKF with our first IMU message, we cannot
+        // compute the orientation of the laser scanner.
+        LOG(INFO) << "PoseTracker not yet initialized.";
+        return nullptr;
+      }
 
-  // Computes the rotation without yaw, as defined by GetYaw().
-  const transform::Rigid3d tracking_to_tracking_2d =
-      transform::Rigid3d::Rotation(
-          Eigen::Quaterniond(Eigen::AngleAxisd(
-              -transform::GetYaw(pose_prediction), Eigen::Vector3d::UnitZ())) *
-          pose_prediction.rotation());
+      transform::Rigid3d pose_prediction;
+      kalman_filter::PoseCovariance covariance_prediction;
+      pose_tracker_->GetPoseEstimateMeanAndCovariance(time, &pose_prediction,
+                                                      &covariance_prediction);
+
+      // Computes the rotation without yaw, as defined by GetYaw().
+      const transform::Rigid3d tracking_to_tracking_2d =
+          transform::Rigid3d::Rotation(
+              Eigen::Quaterniond(Eigen::AngleAxisd(
+                  -transform::GetYaw(pose_prediction), Eigen::Vector3d::UnitZ())) *
+              pose_prediction.rotation());
 
   const sensor::LaserFan laser_fan_in_tracking_2d =
       BuildProjectedLaserFan(tracking_to_tracking_2d.cast<float>(), laser_fan);

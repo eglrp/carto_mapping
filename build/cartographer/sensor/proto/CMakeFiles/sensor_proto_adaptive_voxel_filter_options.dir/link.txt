@@ -1,0 +1,2 @@
+/usr/bin/ar cr libsensor_proto_adaptive_voxel_filter_options.a  CMakeFiles/sensor_proto_adaptive_voxel_filter_options.dir/adaptive_voxel_filter_options.pb.cc.o
+/usr/bin/ranlib libsensor_proto_adaptive_voxel_filter_options.a

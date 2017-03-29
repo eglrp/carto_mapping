@@ -233,6 +233,7 @@ void PoseTracker::GetPoseEstimateMeanAndCovariance(const common::Time time,
                                                    transform::Rigid3d* pose,
                                                    PoseCovariance* covariance) {
   const Distribution belief = GetBelief(time);
+
   *pose = RigidFromState(belief.GetMean());
   static_assert(kMapPositionX == 0, "Cannot extract PoseCovariance.");
   static_assert(kMapPositionY == 1, "Cannot extract PoseCovariance.");

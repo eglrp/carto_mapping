@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcartographer.a  CMakeFiles/cartographer.dir/cartographer_dummy.cc.o
+/usr/bin/ranlib libcartographer.a

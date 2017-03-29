@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcommon_mutex.a  
+/usr/bin/ranlib libcommon_mutex.a

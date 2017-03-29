@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcommon_make_unique.a  
+/usr/bin/ranlib libcommon_make_unique.a

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcommon_ordered_multi_queue.a  
+/usr/bin/ranlib libcommon_ordered_multi_queue.a

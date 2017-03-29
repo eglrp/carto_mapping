@@ -95,6 +95,7 @@ double RealTimeCorrelativeScanMatcher::Match(
     transform::Rigid2d* pose_estimate) const {
   CHECK_NOTNULL(pose_estimate);
 
+  //Get the rotation of the initial pose, but I don't understand why the author did it!
   const Eigen::Rotation2Dd initial_rotation = initial_pose_estimate.rotation();
   const sensor::PointCloud2D rotated_point_cloud =
       sensor::TransformPointCloud2D(
